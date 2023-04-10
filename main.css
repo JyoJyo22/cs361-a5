@@ -1,0 +1,185 @@
+/* @import url('/node_modules/modern-normalize/modern-normalize.css');       this only works in localhost   */
+@import url('https://web.engr.oregonstate.edu/~houghtjo/assign3_houghtjo/node_modules/modern-normalize/modern-normalize.css'); 
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant&family=Kalam:wght@300&display=swap');
+
+:root {
+    --medium-cream: rgba(243, 234, 200, 0.9);
+    --light-cream: rgba(247, 242, 224, 0.7);
+    --light-matcha: rgba(156, 156, 94, 0.38);
+    --matcha: #9b9b5d;
+    --dark-matcha: #7d7d4a;
+    --dark-gray: #3f3d37;
+    --dark-gray-trans: rgba(63, 61, 55, 0.9);
+    --medium-gray: #a49898;
+}
+
+body {
+    /* background-image: url('/images/totoro-anime-crochet-doll.jpeg');       this only works in localhost   */
+    background-image: url('https://web.engr.oregonstate.edu/~houghtjo/assign3_houghtjo/images/totoro-anime-crochet-doll.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 80vw;
+    font-family: Cormorant, serif;
+    font-size: large;
+    color: var(--dark-gray);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:  Kalam, cursive;
+    font-weight: bold;
+    color: var(--matcha);
+}
+
+header {
+    background-color: var(--light-cream);
+    /* display: inline-block; */
+    padding: 0% 1.5% 0% 1.5%;
+    margin: 2%;
+    border: 10px solid var(--matcha);
+    border-radius: 10px;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+main {
+    background-color: var(--medium-cream);
+    /* display: inline-block; */
+    padding: 1%;
+    margin: 2%;
+    border: 10px solid var(--matcha);
+    border-radius: 10px;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+footer {
+    background-color: var(--light-cream);
+    /* display: inline-block; */
+    padding: 1%;
+    margin: 2%;
+    border: 10px solid var(--matcha);
+    border-radius: 10px;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+nav {
+    text-decoration: none;
+    /* there are only anchor elements in the nav block currently */
+}
+
+nav a {
+    text-decoration: none;
+    display: inline-block;
+    background-color: var(--matcha);
+    color: var(--dark-gray);
+    padding: 1%;
+    margin: 0.3% 0.3% 0.3% 2%;
+    border: 5px solid var(--light-cream);
+    border-radius: 5px;
+    min-width: 70px;
+    min-height: 50px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: var(--light-cream);
+    border: 5px solid var(--matcha);
+}
+
+figure {
+    background-color: var(--light-matcha);
+    border: 5px solid var(--light-matcha);
+    border-radius: 5px;
+    /* max-height: fit-content; */
+    
+}
+
+figure:nth-child(odd) {
+    background-color: var(--dark-gray-trans);
+    border: 5px solid var(--dark-gray);
+    color: var(--light-cream);
+    border-radius: 5px;
+    /* max-height: fit-content; */
+}
+
+figcaption {
+    padding: 1.5%;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: var(--light-cream);
+    padding: 1%;
+    margin: 2%;
+    border: none;
+}
+
+.gallery figure {
+    width: 30%;
+}
+
+.intra-nav {
+    text-decoration: none;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-cream);
+    color: var(--dark-gray);
+    padding: 1%;
+    margin: 2% 2% 0.3% 2%;
+    border: 5px solid var(--matcha);
+    border-radius: 5px;
+}
+
+.intra-nav a {
+    background-color: var(--medium-cream);
+    color: var(--dark-gray);
+    border: 5px solid var(--dark-matcha);
+    margin-left: 2%;
+}
+
+.intra-nav a:hover {
+    background-color: var(--matcha);
+    color: var(--dark-gray);
+    border: 5px solid var(--medium-cream);
+}
+
+
+
+
+
+
+ 
+/*   ===== TABLET  media query overrides mobile styles ===== */
+@media all and (min-width: 600px) {
+    .gallery figure {
+        width: 30%
+    }
+}
+
+/*   ===== DESKTOP  media query overrides mobile and tablet styles ===== */
+@media all and (min-width: 1080px) {
+    .gallery figure {
+        width: 40%
+    }
+} 
+
+/*   ===== PRINT  media query overrides previous styles =====  */
+/* @media print {}  */
+
+

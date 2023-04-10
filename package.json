@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/JyoJyo22/cs_361_a2#readme",
   "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "modern-normalize": "^1.1.0"
   }
 }

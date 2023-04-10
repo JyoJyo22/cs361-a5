@@ -15,8 +15,7 @@
 }
 
 body {
-    /* background-image: url('/images/totoro-anime-crochet-doll.jpeg');       this only works in localhost   */
-    background-image: url('https://web.engr.oregonstate.edu/~houghtjo/assign3_houghtjo/images/totoro-anime-crochet-doll.jpeg');
+    background-color: darkslategrey;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

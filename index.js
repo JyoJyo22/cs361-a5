@@ -14,7 +14,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 
-let imageURL = "./images/default.png";
+let imageURL = "./images/romaji.png";
 let imageReady = false;
 
 
@@ -69,13 +69,17 @@ app.get("/", (req, res) => {
 });
 
 app.post("/generateNum", (req, res) => {
+    imageReady = req.body.imageReady;
     initiateKanjiRequest();
     const waitLoop = setInterval(() => {
+        console.log(imageReady);
         if (imageReady) {
             imageReady = false;
             clearInterval(waitLoop);
-            res.render('image', {imageURL: imageURL});
+            // res.render('image', {imageURL: imageURL});
+            res.send(imageURL);
         }
+    console.log("end of FUNC");
     }, 100);
 });
 

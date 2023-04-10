@@ -1,0 +1,23 @@
+{
+  "name": "cs_361_assignment_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JyoJyo22/cs_361_a2.git"
+  },
+  "author": "Joseph Houghton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JyoJyo22/cs_361_a2/issues"
+  },
+  "homepage": "https://github.com/JyoJyo22/cs_361_a2#readme",
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  }
+}

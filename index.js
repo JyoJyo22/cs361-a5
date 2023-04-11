@@ -76,6 +76,9 @@ setInterval(() => {
             console.log(data);
         }
     });
+}, 10000);
+
+setInterval(() => {
     fs.readFile('./kanji-image.txt', 'utf8', (err, data) => {
         if (err) console.error(err);
         if (data[0] === ".") {            // if data starts with a . then it contains a file image path

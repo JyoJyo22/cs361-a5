@@ -3,37 +3,29 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Joseph Houghton</title>
+    <title>Kanji</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
-    <header>
-        <h1>Joseph Houghton</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="gallery.html">Gallery</a>
-    </nav>
-    <nav class="intra-nav">
-        <a href="#web-servers">Web Servers</a>
-        <a href="#frontend-design">Frontend Design</a>
-        <a href="#images-and-css">Images & CSS</a>
-      </nav>
+    <section class="header-nav">
+        <header class="header-name">
+            <h2 class="title" >Kanji Generator</h2>
+        </header>
+        <nav>
+            <a href="index.html">
+                <p>
+                    Home
+                </p>
+            </a>
+        </nav>
+    </section>
     <main>
         <section>
-            <h2>Web Development Concepts</h2>
+            <h2>Click below to generate Kanji</h2>
             <article id="web-servers">
-                <h3>About Web Servers</h3>
-                <p>
-                    Waiting for Kanji...
-                </p>
                 <form action="/generateNum" method="POST">
-                    <fieldset>
-                        <label for="imageReady">make image ready TRUE</label>
-                        <button name="imageReady" value="true">generate num</button>
-                    </fieldset>
+                        <button name="imageReady" value="true">Generate Kanji</button>
                     <!-- <fieldset>
                         <label for="kanji">Please enter your Kanji</label>
                         <input 
@@ -47,8 +39,5 @@
             </article>
         </section>
     </main>
-    <footer>
-        Copyright &copy; Joseph Houghton 2023
-    </footer>
 </body>
 </html>

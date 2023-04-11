@@ -19,4 +19,4 @@ function listenFile() {
 
 setInterval(() => {
     listenFile();
-}, 5000);
+}, 10000);

@@ -3,7 +3,6 @@ const fs = require('fs');
 console.log('PRNG service active');
 
 function listenFile() {
-    console.log('in PRNG.js');
     fs.readFile("./prng.txt", 'utf8', (err, data) => {         // read prng.txt
         if (err) console.err(err);
         if (data === "run") {
@@ -21,4 +20,4 @@ function listenFile() {
 
 setInterval(() => {
     listenFile();
-}, 5000);
+}, 10000);

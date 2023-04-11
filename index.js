@@ -87,7 +87,7 @@ setInterval(() => {
         }
     });
 
-}, 5000);
+}, 10000);
 
 
 function kanjiRequest() {

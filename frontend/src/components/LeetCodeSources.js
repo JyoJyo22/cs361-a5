@@ -1,6 +1,6 @@
 import React from "react"
 
-function LeetCodeSources( {topicNum, prevActionArr, handleTextSection} ) {
+function LeetCodeSources( {topicNum, prevActionArr, handleTextSection, leetCodeEntry} ) {
 
     // call to DB or MicroService that loads the LeetCode SOURCES content based on topicNum
         // and if topicNum is 0, then this is just default Pattern page w/ "select a pattern to begin"
@@ -10,9 +10,9 @@ function LeetCodeSources( {topicNum, prevActionArr, handleTextSection} ) {
         <>
         <div key={prevActionArr.length} className="leet-main-page">
             <section className="text-section">
-                <h2>Find More Sources of Pattern number: {topicNum} </h2>
+                <h2>Explore more sources of: {leetCodeEntry.patternName} </h2>
                 <p>
-                    Info about LeetCode goes here
+                    {leetCodeEntry.patternSources}
                 </p>
             </section>
 

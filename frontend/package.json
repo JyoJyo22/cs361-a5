@@ -1,5 +1,5 @@
 {
-  "name": "cs_361_assignment_2",
+  "name": "leetcode-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,9 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
+  
+  "proxy": "http://localhost:3000",
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JyoJyo22/cs_361_a2.git"

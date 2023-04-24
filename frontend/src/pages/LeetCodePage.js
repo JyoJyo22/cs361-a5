@@ -4,7 +4,7 @@ import LeetCodePattern from "../components/LeetCodePattern";
 import LeetCodeSources from "../components/LeetCodeSources";
 
 
-function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, setPrevActionArr} ) {
+function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, setPrevActionArr, leetCodeEntry} ) {
 
     const handleTextSection = (textSectionValue) => {
         setPrevActionArr(oldArr => [...oldArr, {
@@ -20,15 +20,30 @@ function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, se
     switch(textSection) {
         case("more"):
             return(
-                <LeetCodeMore topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
+                <LeetCodeMore 
+                    topicNum={topicNum} 
+                    prevActionArr={prevActionArr} 
+                    handleTextSection={handleTextSection}
+                    leetCodeEntry={leetCodeEntry}
+                />
             );
         case("sources"):
             return(
-                <LeetCodeSources topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
+                <LeetCodeSources 
+                    topicNum={topicNum} 
+                    prevActionArr={prevActionArr} 
+                    handleTextSection={handleTextSection}
+                    leetCodeEntry={leetCodeEntry}
+                />
             );
         default:                                 // default to option "pattern" for Pattern page
             return(
-                <LeetCodePattern topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
+                <LeetCodePattern 
+                    topicNum={topicNum} 
+                    prevActionArr={prevActionArr} 
+                    handleTextSection={handleTextSection}
+                    leetCodeEntry={leetCodeEntry}
+                />
             );
     }
 }

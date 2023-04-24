@@ -17,6 +17,8 @@ function App() {
 
   const [prevActionArr, setPrevActionArr] = useState([]);       // for back button
 
+  const [leetcodeEntry, setLeetCodeEntry] = useState({});       // Use state to bring in LeetCode data from MongoDB
+
 
   return (
     <div className="app">
@@ -38,7 +40,8 @@ function App() {
                   setTopicNum={setTopicNum}
                   prevActionArr={prevActionArr} 
                   setPrevActionArr={setPrevActionArr} 
-                  textSection={textSection}
+                  textSection={textSection} 
+                  setLeetCodeEntry={setLeetCodeEntry}
               />
             ]}/>
           </Routes>
@@ -62,7 +65,8 @@ function App() {
                     textSection={textSection} 
                     setTextSection={setTextSection} 
                     prevActionArr={prevActionArr} 
-                    setPrevActionArr={setPrevActionArr}
+                    setPrevActionArr={setPrevActionArr} 
+                    leetcodeEntry={leetcodeEntry}
                   />
                 }/>
               </Routes>

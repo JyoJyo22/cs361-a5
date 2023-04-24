@@ -1,18 +1,14 @@
 import React from "react"
 
-function LeetCodeMore( {topicNum, prevActionArr, handleTextSection} ) {
-
-    // call to DB or MicroService that loads the LeetCode MORE content based on topicNum
-        // and if topicNum is 0, then this is just default Pattern page w/ "select a pattern to begin"
-    // then return that info for rendering
+function LeetCodeMore( {topicNum, prevActionArr, handleTextSection, leetCodeEntry} ) {
 
     return(
         <>
         <div className="leet-main-page">
             <section className="text-section">
-                <h2>More Info on Pattern of Pattern number: {topicNum} </h2>
+                <h2>More Info on:  {leetCodeEntry.patternName} </h2>
                 <p>
-                    Info about LeetCode MORE goes here
+                    {leetCodeEntry.patternMoreInfo}
                 </p>
             </section>
 

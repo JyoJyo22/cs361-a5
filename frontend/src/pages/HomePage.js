@@ -3,7 +3,7 @@ import ContactInfo from "../components/ContactInfo";
 import HomeInfo from "../components/HomeInfo";
 import LeetCodeInfo from "../components/LeetCodeInfo";
 
-function HomePage( {info, setPrevActionArr} ) {
+function HomePage( {info, prevActionArr, setPrevActionArr, setTopicNum, setTextSection} ) {
 
     switch(info) {
         case "contact":
@@ -12,7 +12,12 @@ function HomePage( {info, setPrevActionArr} ) {
             );
         case "leetcode":
             return(
-                <LeetCodeInfo setPrevActionArr={setPrevActionArr}/>
+                <LeetCodeInfo 
+                    prevActionArr={prevActionArr} 
+                    setPrevActionArr={setPrevActionArr} 
+                    setTopicNum={setTopicNum} 
+                    setTextSection={setTextSection}
+                />
             );
         default:                    // default to option "home" for home page
             return(

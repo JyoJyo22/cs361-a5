@@ -4,7 +4,7 @@ import LeetCodePattern from "../components/LeetCodePattern";
 import LeetCodeSources from "../components/LeetCodeSources";
 
 
-function LeetCodePage( {topicNum, textSection, setTextSection, setPrevActionArr} ) {
+function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, setPrevActionArr} ) {
 
     const handleTextSection = (textSectionValue) => {
         setPrevActionArr(oldArr => [...oldArr, {
@@ -13,21 +13,22 @@ function LeetCodePage( {topicNum, textSection, setTextSection, setPrevActionArr}
             textSection: textSection
         }]);
         setTextSection(textSectionValue);
+        console.log(prevActionArr);
     }
 
 
     switch(textSection) {
         case("more"):
             return(
-                <LeetCodeMore topicNum={topicNum} handleTextSection={handleTextSection}/>
+                <LeetCodeMore topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
             );
         case("sources"):
             return(
-                <LeetCodeSources topicNum={topicNum} handleTextSection={handleTextSection}/>
+                <LeetCodeSources topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
             );
         default:                                 // default to option "pattern" for Pattern page
             return(
-                <LeetCodePattern topicNum={topicNum} handleTextSection={handleTextSection}/>
+                <LeetCodePattern topicNum={topicNum} prevActionArr={prevActionArr} handleTextSection={handleTextSection}/>
             );
     }
 }

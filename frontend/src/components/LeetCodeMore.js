@@ -1,6 +1,6 @@
 import React from "react"
 
-function LeetCodeMore( {topicNum, handleTextSection} ) {
+function LeetCodeMore( {topicNum, prevActionArr, handleTextSection} ) {
 
     // call to DB or MicroService that loads the LeetCode MORE content based on topicNum
         // and if topicNum is 0, then this is just default Pattern page w/ "select a pattern to begin"

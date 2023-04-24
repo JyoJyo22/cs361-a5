@@ -1,15 +1,17 @@
 import React from "react";
 
 
-function LeetCodeMenu( {topicNum, setTopicNum, setPrevActionArr, textSection} ) {
+function LeetCodeMenu( {topicNum, setTopicNum, prevActionArr, setPrevActionArr, textSection} ) {
 
     const handleTopicNum = (num) => {
         setPrevActionArr(oldArr => [...oldArr, {            // push a new prev state Obj to end of the prevActionArr
+            key: oldArr.length,
             page: "leetcode",
             topicNum: topicNum,
             textSection: textSection
         }]);
         setTopicNum(num);
+        console.log(prevActionArr);
     }
 
     return (

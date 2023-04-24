@@ -10,18 +10,20 @@ function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTex
     }
 
     const handlePrevAction = () => {
-        console.log(prevActionArr);
         const copyPrevActionArr = [...prevActionArr];   // we don't want to change the State w/o using useState, so make copy
         const prevState = copyPrevActionArr.pop();         // grab whatever the last State was and store it
         setPrevActionArr(copyPrevActionArr);            // and NOW we can set the arr to the copy w/ useState
-
+        console.log(prevState.page);
         if (prevState.page === "/") {
             handleInfo("leetcode");
+            console.log(redirect);
             redirect("/");
+            redirect(0);                          // a work-around sol to a curr React useNavigate() problem
         } else {
             setTopicNum(prevState.topicNum);
             setTextSection(prevState.textSection);
         }
+        console.log(prevActionArr);
     }
 
 

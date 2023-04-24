@@ -36,6 +36,7 @@ function App() {
               <LeetCodeMenu 
                   topicNum={topicNum} 
                   setTopicNum={setTopicNum}
+                  prevActionArr={prevActionArr} 
                   setPrevActionArr={setPrevActionArr} 
                   textSection={textSection}
               />
@@ -46,12 +47,21 @@ function App() {
           <main>
             <section>
               <Routes>
-                <Route path="/" element={<HomePage info={info} setPrevActionArr={setPrevActionArr} />} />
+                <Route path="/" element={
+                  <HomePage 
+                    info={info} 
+                    prevActionArr={prevActionArr} 
+                    setPrevActionArr={setPrevActionArr} 
+                    setTopicNum={setTopicNum}
+                    setTextSection={setTextSection}
+                  />} 
+                />
                 <Route path="/leetcode" element={
                   <LeetCodePage 
                     topicNum={topicNum} 
                     textSection={textSection} 
                     setTextSection={setTextSection} 
+                    prevActionArr={prevActionArr} 
                     setPrevActionArr={setPrevActionArr}
                   />
                 }/>

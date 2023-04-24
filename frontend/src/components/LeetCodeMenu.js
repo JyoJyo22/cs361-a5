@@ -1,22 +1,32 @@
 import React from "react";
 
 
-function LeetCodeMenu() {
+function LeetCodeMenu( {topicNum, setTopicNum, setPrevActionArr, textSection} ) {
+
+    const handleTopicNum = (num) => {
+        setPrevActionArr(oldArr => [...oldArr, {            // push a new prev state Obj to end of the prevActionArr
+            page: "leetcode",
+            topicNum: topicNum,
+            textSection: textSection
+        }]);
+        setTopicNum(num);
+    }
+
     return (
 
     <section className="leetcode-menu">
         <h2 className="patterns-menu-title">LeetCode Patterns</h2>
         <article className="inner-menu">
-            <button>Web Servers 1</button>
-            <button>Web Servers 2</button>
-            <button>Web Servers 3</button>
-            <button>Web Servers 4</button>
-            <button>Web Servers 5</button>
-            <button>Web Servers 6</button>
-            <button>Web Servers 7</button>
-            <button>Web Servers 8</button>
-            <button>Web Servers 9 </button>
-            <button>Web Servers 10</button>
+            <button onClick={() => handleTopicNum(1)}>Web Servers 1</button>
+            <button onClick={() => handleTopicNum(2)}>Web Servers 2</button>
+            <button onClick={() => handleTopicNum(3)}>Web Servers 3</button>
+            <button onClick={() => handleTopicNum(4)}>Web Servers 4</button>
+            <button onClick={() => handleTopicNum(5)}>Web Servers 5</button>
+            <button onClick={() => handleTopicNum(6)}>Web Servers 6</button>
+            <button onClick={() => handleTopicNum(7)}>Web Servers 7</button>
+            <button onClick={() => handleTopicNum(8)}>Web Servers 8</button>
+            <button onClick={() => handleTopicNum(9)}>Web Servers 9 </button>
+            <button onClick={() => handleTopicNum(10)}>Web Servers 10</button>
         </article>
     </section>
 

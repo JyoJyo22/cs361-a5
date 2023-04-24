@@ -1,19 +1,18 @@
 import React from "react"
 
+function HomeInfo() {
 
-function ContactPage() {
-
-    return (
+    return(
         <>
             <section className="text-section">
-                <h2>Contact Info</h2>
+                <h2>About this Site</h2>
                 <p>
-                    contact info here
+                    info about site here
                 </p>
             </section>
         </>
     );
+
 }
 
-
-export default ContactPage;
+export default HomeInfo;

@@ -1,16 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Nav() {
+function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTextSection} ) {
+
+    const redirect = useNavigate();
+
+    const handleInfo = (infoValue) => {
+        setInfo(infoValue);
+    }
+
+    const handlePrevAction = () => {
+        console.log(prevActionArr);
+        const copyPrevActionArr = [...prevActionArr];   // we don't want to change the State w/o using useState, so make copy
+        const prevState = copyPrevActionArr.pop();         // grab whatever the last State was and store it
+        setPrevActionArr(copyPrevActionArr);            // and NOW we can set the arr to the copy w/ useState
+
+        if (prevState.page === "/") {
+            handleInfo("leetcode");
+            redirect("/");
+        } else {
+            setTopicNum(prevState.topicNum);
+            setTextSection(prevState.textSection);
+        }
+    }
+
+
     return(
         <> 
             <nav className="nav-back"> 
-                <Link to="../leetcode">Back</Link>
-                <Link to="/">Home</Link>
-                <Link to="../contact">Contact</Link>
+                <Link onClick={() => handlePrevAction()}>Back</Link>
+                <Link to="/" onClick={() => handleInfo("home")}>Home</Link>
+                <Link to="/" onClick={() => handleInfo("contact")}>Contact</Link>
             </nav>
         </>
     );
 }
 
-export default Nav;
+export default NavBack;

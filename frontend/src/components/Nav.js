@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function Nav() {
+function Nav( {setInfo} ) {
+
+    const handleInfo = (infoValue) => {
+        setInfo(infoValue);
+    }
+
     return(
         <> 
-            <nav> 
-                <Link to="/">Home</Link>
-                <Link to="../contact">Contact</Link>
-                <Link to="../leetcode">LeetCode</Link>
-            </nav>
+            <section> 
+                <button onClick={() => handleInfo("home")}>Home</button>
+                <button onClick={() => handleInfo("contact")}>Contact</button>
+                <button onClick={() => handleInfo("leetcode")}>LeetCode</button>
+            </section>
         </>
     );
 }

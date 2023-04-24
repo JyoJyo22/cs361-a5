@@ -1,16 +1,26 @@
-import React from "react"
+import React from "react";
+import ContactInfo from "../components/ContactInfo";
+import HomeInfo from "../components/HomeInfo";
+import LeetCodeInfo from "../components/LeetCodeInfo";
 
-function HomePage() {
-    return(
-        <>
-            <section className="text-section">
-                <h2>About the Site</h2>
-                <p>
-                    info about site here
-                </p>
-            </section>
-        </>
-    );
+function HomePage( {info, setPrevActionArr} ) {
+
+    switch(info) {
+        case "contact":
+            return(
+                <ContactInfo/>
+            );
+        case "leetcode":
+            return(
+                <LeetCodeInfo setPrevActionArr={setPrevActionArr}/>
+            );
+        default:                    // default to option "home" for home page
+            return(
+                <HomeInfo />
+            );
+    
+    }
+
 }
 
 

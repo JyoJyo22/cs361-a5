@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
-function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSection} ) {
+function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSection, leetCodeEntry, setLeetCodeEntry} ) {
 
     const redirect = useNavigate();
     const [startStudy, setStartStudy] = useState(false);
@@ -15,6 +15,23 @@ function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSec
         setStartStudy(true);
         console.log(prevActionArr);
     }
+
+    // RETRIEVE all LeetCode entries
+    const retrieveLeetCode = async () => {
+        const response = await fetch('/get', { method: 'GET' });        
+        const LeetCodeList = await response.json();       
+        const defaultLeetCodePage = LeetCodeList[0];                 
+        setLeetCodeEntry(defaultLeetCodePage);                             // the first LC in the List is the default page 
+        console.log("LeetCode List: ", LeetCodeList);
+        console.log("LeetCode List at [0] is ", LeetCodeList[0]);
+        console.log("leetCodeEntry: ", leetCodeEntry);
+    } 
+
+    // LOAD all LeetCode entries as a LIST
+    useEffect(() => {
+        retrieveLeetCode();
+    }, []);
+
 
     useEffect(() => {
         if (startStudy) {

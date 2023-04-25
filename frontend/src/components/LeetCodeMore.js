@@ -6,9 +6,10 @@ function LeetCodeMore( {topicNum, prevActionArr, handleTextSection, leetCodeEntr
         <>
         <div className="leet-main-page">
             <section className="text-section">
-                <h2>More Info on:  {leetCodeEntry.patternName} </h2>
+                <h2>More Info on:  LeetCode Pattern </h2>
                 <p>
-                    {leetCodeEntry.patternMoreInfo}
+                    {/* {leetCodeEntry.patternMoreInfo} */}
+                    LeetCode Pattern More Info
                 </p>
             </section>
 

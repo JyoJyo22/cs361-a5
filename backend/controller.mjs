@@ -13,6 +13,7 @@ app.use(express.json());
 // define a Create route
 app.post('/create', (req, res) => {
     LeetCodeModels.createLeetCodeDoc(
+        req.body.patternNo,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -32,7 +33,13 @@ app.post('/create', (req, res) => {
 //  RETRIEVE CONTROLLERS     ######################################
 // define a Retrieve route
 app.get('/get', (req, res) => { 
-    LeetCodeModels.getLeetCode()
+    LeetCodeModels.getLeetCode(
+        req.body.patternNo,
+        req.body.patternName,
+        req.body.patternInfo, 
+        req.body.patternMoreInfo,
+        req.body.patternSources
+    )
         .then(retrievedLeetCode => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
@@ -54,7 +61,7 @@ app.get('/get/:_id', (req, res) => {
     .then(retrievedLeetCode => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
-                console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved by ID.");
+                console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved by PatternNo.");
             } else {
                 res.status(404).json( { Error: "The LeetCode document was not found."} );
             }
@@ -71,6 +78,7 @@ app.get('/get/:_id', (req, res) => {
 app.put('/update/:_id', (req, res) => {
     LeetCodeModels.updateLeetCode(
         req.params._id,
+        req.body.patternNo,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,

@@ -10,9 +10,10 @@ function LeetCodePattern( {topicNum, prevActionArr, handleTextSection, leetCodeE
         <>
         <div className="leet-main-page">
             <section className="text-section">
-                <h2>LeetCode Pattern: {leetCodeEntry.patternName} </h2>
+                <h2>LeetCode Pattern: Pattern Name </h2>
                 <p>
-                    {leetCodeEntry.patternInfo}
+                    {/* {leetCodeEntry.patternInfo} */}
+                    LeetCode pattern learning
                 </p>
             </section>
 

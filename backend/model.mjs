@@ -25,6 +25,7 @@ leetcode_db.once("open", (error) => {
 
 // Define the Collection's Schema.
 const LeetCodeSchema = mongoose.Schema({
+    patternNo: {type: Number, default: 0 },
     patternName: { type: String, required: true, default: "patternName" },
 	patternInfo: { type: String, required: true, default: "patternInfo" },
     patternMoreInfo: { type: String, required: true, default: "patternMoreInfo" },
@@ -39,9 +40,10 @@ const leetcode = mongoose.model("LeetCode", LeetCodeSchema);
 
 //   CREATE MODELS     ##################################################
 // define a model to create a Document in your new Collection
-const createLeetCodeDoc = async (patternName, patternInfo, patternMoreInfo, patternSources) => {
+const createLeetCodeDoc = async (patternNo, patternName, patternInfo, patternMoreInfo, patternSources) => {
     // create an instance of the LeetCode Model from above
     const leetCodeEntry = new leetcode({ 
+        patternNo: patternNo,
         patternName: patternName,
         patternInfo: patternInfo,
         patternMoreInfo: patternMoreInfo,
@@ -55,14 +57,20 @@ const createLeetCodeDoc = async (patternName, patternInfo, patternMoreInfo, patt
 //  RETRIEVE MODELS     #########################################
 // define a model to retrieve Docs from the Collection via a filter
 // Retrieve based on a filter and return a promise.
-const getLeetCode = async () => {
-    const query = leetcode.find();
+const getLeetCode = async (patternNo, patternName, patternInfo, patternMoreInfo, patternSources) => {
+    const query = leetcode.find( { 
+        patternNo: patternNo,
+        patternName: patternName,
+        patternInfo: patternInfo,
+        patternMoreInfo: patternMoreInfo,
+        patternSources: patternSources
+    });
     return query.exec();
 }
 
 
 // define a model to retrieve Docs from the Collection via ID 
-// Retrieve based on the ID and return a promise.
+// Retrieve based on the patternNo and return a promise.
 const getLeetCodeById = async (_id) => {
     const query = leetcode.findById(_id);
     return query.exec();
@@ -73,10 +81,11 @@ const getLeetCodeById = async (_id) => {
 // define a model to update a Doc
 // replaceOne()   this can only replace an entire Doc
 // updateOne()    this allows for updating fields within the Doc
-const updateLeetCode = async (_id, patternName, patternInfo, patternMoreInfo, patternSources) => {
+const updateLeetCode = async (_id, patternNo, patternName, patternInfo, patternMoreInfo, patternSources) => {
     const result = await leetcode.replaceOne( 
         {_id: _id },
         {
+            patternNo: patternNo,
             patternName: patternName,
             patternInfo: patternInfo,
             patternMoreInfo: patternMoreInfo,
@@ -85,6 +94,7 @@ const updateLeetCode = async (_id, patternName, patternInfo, patternMoreInfo, pa
         );
     return {
         _id: _id,
+        patternNo: patternNo,
         patternName: patternName,
         patternInfo: patternInfo,
         patternMoreInfo: patternMoreInfo,

@@ -1,20 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Zen+Old+Mincho&display=swap');
 
 :root {
-    --medium-cream: rgba(243, 234, 200, 0.9);
-    --light-cream: rgba(247, 242, 224, 0.7);
-    --light-matcha: rgba(156, 156, 94, 0.38);
-    --matcha: #9b9b5d;
-    --dark-matcha: #7d7d4a;
-    --dark-gray: #3f3d37;
-    --dark-gray-trans: rgba(63, 61, 55, 0.9);
-    --dark-gray-table: #393737;
-    --medium-gray: #a49898;
-    --warning: #f75f5f;
+    --bg-color: #585555;
+    --button-text: #6B6969;
+    --button-bg: #D9D9D9;
+    --main-text: #9A9595;
+    --sections: #212020;
 }
 
 .app {
-    background-color: var(--medium-gray);  
+    background-color: var(--bg-color); 
     /* background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -32,7 +27,7 @@
 }
 
 body {
-    background-color: var(--medium-gray);      
+    background-color: var(--bg-color);      
     /* background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -103,7 +98,7 @@ nav a:hover {
 }
 
 button {
-    background-color: var(--dark-gray-trans);
+    background-color: var(--button-color);
     border: 5px solid var(--dark-gray);
     border-radius: 15px;
     color: var(--light-cream);
@@ -198,7 +193,7 @@ button:hover {
 @media all and (min-width: 800px) {
 
     .app {
-        background-color: var(--medium-gray);  
+        background-color: var(--bg-color);  
         /* background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -208,7 +203,7 @@ button:hover {
         max-width: 100vw;
         font-family: 'Zen Old Mincho', serif;
         font-size: large;
-        color: var(--dark-gray);
+        color: var(--main-text);
         display: flex;
         max-height: 100vh;           
         flex-direction: row;         
@@ -216,7 +211,7 @@ button:hover {
     }
 
     body {
-        background-color: var(--medium-gray);      
+        background-color: var(--bg-color);     
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -226,7 +221,7 @@ button:hover {
         max-width: 90vw;
         font-family: 'Zen Old Mincho', serif;
         font-size: large;
-        color: var(--dark-gray);
+        color: var(--main-text);
         display: flex;
         max-height: 100vh;          
         flex-direction: row;         
@@ -236,10 +231,10 @@ button:hover {
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Zen Old Mincho', serif;
         font-weight: bold;
-        color: var(--matcha);
+        color: var(--main-text);
     }
     
-    header {
+    /* header {
         background-color: var(--light-cream);
         padding: 2% 1.5% 2% 1.5%;
         margin: 5% 2% 30% 2%;
@@ -251,24 +246,20 @@ button:hover {
         text-orientation: upright;              
         writing-mode: vertical-lr;            
         justify-content: center;                          
-
-    } 
+    }  */
     
     main {
-        background-color: var(--medium-cream);
+        background-color: var(--sections);
         padding: 1%;
         margin: 5% 5% 5% 15%;
-        border: 10px solid var(--matcha);
+        border: 10px solid var(--sections);
         border-radius: 10px;
         max-width: 80vw;      
         min-width: 50vw;         
         max-height: 90vh;   
-        min-height: 80vh;            
-        overflow: auto;            
-        overflow-y: scroll;     
+        min-height: 80vh;  
+        overflow-y: scroll;
         scroll-behavior: smooth;
-        align-items: center;     
-        flex-grow: 1;
     }
     
     nav {
@@ -284,11 +275,11 @@ button:hover {
     nav a {
         text-decoration: none;
         display: flex;
-        background-color: var(--matcha);
-        color: var(--dark-gray);
+        background-color: var(--button-bg);
+        color: var(--button-text);
         padding: 1%;
         margin: 4% 4% 4% 4%;
-        border: 5px solid var(--light-cream);
+        border: 5px solid var(--button-bg);
         border-radius: 15px;
         width: 200px;
         height: 50px;
@@ -297,16 +288,16 @@ button:hover {
     }
     
     nav a:hover {
-        background-color: var(--light-cream);
-        border: 5px solid var(--matcha);
+        background-color: var(--sections);
+        border: 5px solid var(--button-bg);
     }
     
     
     button {
-        background-color: var(--dark-gray-trans);
-        border: 5px solid var(--dark-gray);
+        background-color: var(--button-bg);
+        border: 5px solid var(--button-bg);
         border-radius: 15px;
-        color: var(--light-cream);
+        color: var(--button-text);
         margin: 5px;
         padding:  5px;                   
         font-weight: 100;             
@@ -318,9 +309,9 @@ button:hover {
     }
     
     button:hover {
-        background-color: var(--matcha);
-        color: var(--dark-gray);
-        border: 5px solid var(--medium-cream);
+        background-color: var(--sections);
+        color: var(--button-bg);
+        border: 5px solid var(--sections);
         cursor: pointer;
     }
 
@@ -331,8 +322,8 @@ button:hover {
         flex-direction: column;                     
         width: 260px;
         height: 430px;
-        background-color: var(--dark-gray);
-        color: var(--dark-gray);
+        background-color: var(--sections);
+        color: var(--main-text);
         padding: 10px;
         margin: 5px;
         border-radius: 5px;
@@ -345,8 +336,8 @@ button:hover {
         flex-direction: column;                     
         width: 240px;
         height: 430px;
-        background-color: var(--light-cream);
-        color: var(--dark-gray);
+        background-color: var(--bg-color);
+        color: var(--main-text);
         padding: 5px;
         border-radius: 5px;
         overflow-y: scroll;
@@ -386,12 +377,13 @@ button:hover {
     }
 
     .text-section {
-        background-color: var(--dark-gray-trans);
-        border: 5px solid var(--dark-gray);
-        color: var(--light-cream);
-        border-radius: 5px;
-        margin: 2%;
-        padding: 2%;
+        background-color: var(--sections);
+        border: 5px solid var(--bg-color);
+        color: var(--main-text);
+        border-radius: 15px;
+        text-align: center;
+        height: 80%;
+        width: 90%;
     }
 
     .nav-back {
@@ -406,16 +398,23 @@ button:hover {
     .start-study {
         text-decoration: none;
         display: flex;
-        background-color: var(--dark-gray);
-        color: var(--matcha);
-        padding: 1%;
-        margin: 4% 4% 4% 4%;
-        border: 5px solid var(--light-cream);
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        padding: 10px;
+        border: 5px solid var(--button-bg);
         border-radius: 15px;
+        margin: 30px auto 10px auto;
         width: 200px;
         height: 70px;
         justify-content: center;
         align-items: center;
+    }
+
+    .start-study:hover {
+        background-color: var(--bg-color);
+        color: var(--button-bg);
+        border: 5px solid var(--sections);
+        cursor: pointer;
     }
 
     .leet-main-page {

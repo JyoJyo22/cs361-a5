@@ -17,7 +17,13 @@ function App() {
 
   const [prevActionArr, setPrevActionArr] = useState([]);       // for back button
 
-  const [leetcodeEntry, setLeetCodeEntry] = useState({});       // Use state to bring in LeetCode data from MongoDB
+  const [leetcodeEntry, setLeetCodeEntry] = useState({            // Use state to bring in LeetCode data from MongoDB
+    patternNo: 0,                                               // set default for default LeetCode Page
+    patternName: "pattern name",
+    patternInfo: "pattern info",
+    patternMoreInfo: "more pattern info",
+    patternSources  : "pattern soruces"
+  });                                                       
 
 
   return (
@@ -57,6 +63,7 @@ function App() {
                     setPrevActionArr={setPrevActionArr} 
                     setTopicNum={setTopicNum}
                     setTextSection={setTextSection}
+                    setLeetCodeEntry={setLeetCodeEntry}
                   />} 
                 />
                 <Route path="/leetcode" element={

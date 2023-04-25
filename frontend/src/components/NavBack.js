@@ -13,7 +13,9 @@ function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTex
         const copyPrevActionArr = [...prevActionArr];   // we don't want to change the State w/o using useState, so make copy
         const prevState = copyPrevActionArr.pop();         // grab whatever the last State was and store it
         setPrevActionArr(copyPrevActionArr);            // and NOW we can set the arr to the copy w/ useState
+
         console.log(prevState.page);
+        
         if (prevState.page === "/") {
             handleInfo("leetcode");
             console.log(redirect);

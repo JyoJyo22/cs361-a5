@@ -10,9 +10,10 @@ function LeetCodeSources( {topicNum, prevActionArr, handleTextSection, leetCodeE
         <>
         <div key={prevActionArr.length} className="leet-main-page">
             <section className="text-section">
-                <h2>Explore more sources of: {leetCodeEntry.patternName} </h2>
+                <h2>Explore more sources of: Pattern Name </h2>
                 <p>
-                    {leetCodeEntry.patternSources}
+                    {/* {leetCodeEntry.patternSources} */}
+                    LeetCode Pattern sourcess
                 </p>
             </section>
 

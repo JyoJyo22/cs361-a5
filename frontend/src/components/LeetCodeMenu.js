@@ -5,7 +5,6 @@ function LeetCodeMenu( {topicNum, setTopicNum, prevActionArr, setPrevActionArr, 
 
     const handleTopicNum = (num) => {
         setPrevActionArr(oldArr => [...oldArr, {            // PUSH a new prev state Obj to end of the prevActionArr
-            key: oldArr.length,
             page: "leetcode",
             topicNum: topicNum,
             textSection: textSection

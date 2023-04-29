@@ -10,15 +10,19 @@ function LeetCodeSources( {topicNum, prevActionArr, handleTextSection, leetCodeE
         <>
         <div key={prevActionArr.length} className="leet-main-page">
             <section className="text-section">
-                <h2>Explore more sources of: Pattern Name </h2>
+                <h2>Explore more sources of: {leetCodeEntry.patternName} </h2>
                 <p>
-                    {/* {leetCodeEntry.patternSources} */}
-                    LeetCode Pattern sourcess
+                    {leetCodeEntry.patternSources}
+                </p>
+                <p>
+                    These links will navigate you away from this site.
                 </p>
             </section>
 
-            <button onClick={ () => handleTextSection("pattern")}>Return to Studying</button>
-            <button onClick={ () => handleTextSection("more")}>Get More Info</button>
+            <button className="inner-buttons" onClick={ () => handleTextSection("pattern")}>Return to Studying</button>
+            <p className="button-labels"> head back to LeetCode studying </p>
+            <button className="inner-buttons" onClick={ () => handleTextSection("more")}>Get More Info</button>
+            <p className="button-labels"> Head here for extra info on this topic </p>
         </div>
         </>
     );

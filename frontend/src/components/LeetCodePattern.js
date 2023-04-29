@@ -10,15 +10,16 @@ function LeetCodePattern( {topicNum, prevActionArr, handleTextSection, leetCodeE
         <>
         <div className="leet-main-page">
             <section className="text-section">
-                <h2>LeetCode Pattern: Pattern Name </h2>
+                <h2>LeetCode Pattern: {leetCodeEntry.patternName} </h2>
                 <p>
-                    {/* {leetCodeEntry.patternInfo} */}
-                    LeetCode pattern learning
+                    {leetCodeEntry.patternInfo}
                 </p>
             </section>
 
-            <button onClick={ () => handleTextSection("more")}>Get More Info</button>
-            <button onClick={ () => handleTextSection("sources")}>Outside Sources</button>
+            <button className="inner-buttons" onClick={ () => handleTextSection("more")}>Get More Info</button>
+            <p className="button-labels"> Head here for extra info on this topic </p>
+            <button className="inner-buttons" onClick={ () => handleTextSection("sources")}>Outside Sources</button>
+            <p className="button-labels"> Find more sources on this topic </p>
         </div>
         </>
     );

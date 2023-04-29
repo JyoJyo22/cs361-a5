@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom";
 
 function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSection, leetCodeEntry, setLeetCodeEntry} ) {
@@ -16,21 +16,21 @@ function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSec
         console.log(prevActionArr);
     }
 
-    // RETRIEVE all LeetCode entries
-    const retrieveLeetCode = async () => {
-        const response = await fetch('/get', { method: 'GET' });        
-        const LeetCodeList = await response.json();       
-        const defaultLeetCodePage = LeetCodeList[0];                 
-        setLeetCodeEntry(defaultLeetCodePage);                             // the first LC in the List is the default page 
-        console.log("LeetCode List: ", LeetCodeList);
-        console.log("LeetCode List at [0] is ", LeetCodeList[0]);
-        console.log("leetCodeEntry: ", leetCodeEntry);
-    } 
+    // // RETRIEVE all LeetCode entries
+    // const retrieveLeetCode = async () => {
+    //     const response = await fetch('/get', { method: 'GET' });        
+    //     const LeetCodeList = await response.json();       
+    //     const defaultLeetCodePage = LeetCodeList[0];                 
+    //     setLeetCodeEntry(defaultLeetCodePage);                          // the first LC in the List is the default page 
+    //     // console.log("LeetCode List: ", LeetCodeList);
+    //     // console.log("LeetCode List at [0] is ", LeetCodeList[0]);
+    //     // console.log("leetCodeEntry: ", leetCodeEntry);
+    // } 
 
-    // LOAD all LeetCode entries as a LIST
-    useEffect(() => {
-        retrieveLeetCode();
-    }, []);
+    // // LOAD all LeetCode entries as a LIST
+    // useEffect(() => {
+    //     retrieveLeetCode();
+    // }, []);
 
 
     useEffect(() => {
@@ -52,7 +52,8 @@ function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSec
                 </p>
             </section>
 
-            <button onClick={() => handleStudy()} className="start-study">Start Studying Leetcode</button>
+            <button onClick={() => handleStudy()} className="inner-buttons">Start Studying Leetcode</button>
+            <p className="button-labels"> click here to get started </p>
         </>
     );
 }

@@ -395,7 +395,7 @@ button:hover {
         flex-wrap: nowrap;
     }
 
-    .start-study {
+    .inner-buttons {
         text-decoration: none;
         display: flex;
         background-color: var(--button-bg);
@@ -410,7 +410,7 @@ button:hover {
         align-items: center;
     }
 
-    .start-study:hover {
+    .inner-buttons:hover {
         background-color: var(--bg-color);
         color: var(--button-bg);
         border: 5px solid var(--sections);
@@ -421,6 +421,10 @@ button:hover {
         align-items: center;
         align-content: center;
         justify-items: center;
+    }
+
+    .button-labels {
+        text-align: center;
     }
 
 

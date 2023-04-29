@@ -13,7 +13,6 @@ app.use(express.json());
 // define a Create route
 app.post('/create', (req, res) => {
     LeetCodeModels.createLeetCodeDoc(
-        req.body.patternNo,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -33,16 +32,11 @@ app.post('/create', (req, res) => {
 //  RETRIEVE CONTROLLERS     ######################################
 // define a Retrieve route
 app.get('/get', (req, res) => { 
-    LeetCodeModels.getLeetCode(
-        req.body.patternNo,
-        req.body.patternName,
-        req.body.patternInfo, 
-        req.body.patternMoreInfo,
-        req.body.patternSources
-    )
+    LeetCodeModels.getLeetCode()
         .then(retrievedLeetCode => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
+                console.log("Retrieved from LeetCode DB: ", retrievedLeetCode);
                 console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved.");
             } else {
                 res.status(404).json( { Error: "The LeetCode document was not found."} );
@@ -55,15 +49,16 @@ app.get('/get', (req, res) => {
 });
 
 
-// define a Retrieve by ID route
-app.get('/get/:_id', (req, res) => {
-    LeetCodeModels.getLeetCodeById(req.params._id)
+// define a Retrieve by Name route
+app.get('/get/:patternName', (req, res) => {
+    LeetCodeModels.getLeetCodeByName(req.params.patternName)
     .then(retrievedLeetCode => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
-                console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved by PatternNo.");
+                console.log("Retrieved from LeetCode DB: ", retrievedLeetCode);
+                console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved by Name.");
             } else {
-                res.status(404).json( { Error: "The LeetCode document was not found."} );
+                res.status(404).json( { Error: `The patternName ${req.params.patternName} was not found.`} );
             }
         })
         .catch(error => {
@@ -78,7 +73,6 @@ app.get('/get/:_id', (req, res) => {
 app.put('/update/:_id', (req, res) => {
     LeetCodeModels.updateLeetCode(
         req.params._id,
-        req.body.patternNo,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,

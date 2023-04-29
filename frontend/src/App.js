@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
@@ -17,13 +17,25 @@ function App() {
 
   const [prevActionArr, setPrevActionArr] = useState([]);       // for back button
 
-  const [leetcodeEntry, setLeetCodeEntry] = useState({            // Use state to bring in LeetCode data from MongoDB
-    patternNo: 0,                                               // set default for default LeetCode Page
-    patternName: "pattern name",
+  const [leetCodeEntry, setLeetCodeEntry] = useState({            // Use state to bring in LeetCode data from MongoDB
+    patternName: "pattern name",                                    
     patternInfo: "pattern info",
     patternMoreInfo: "more pattern info",
     patternSources  : "pattern soruces"
-  });                                                       
+  }); 
+  
+
+  // RETRIEVE the default LeetCode entry by ID
+  const retrieveLeetCode = async (patternName) => {
+    const response = await fetch(`/get/${patternName}`, { method: 'GET' });     // retrieve a single Leetcode Entry by Name
+    const newLeetCode = await response.json();                     
+    setLeetCodeEntry(newLeetCode);                                    
+} 
+
+  // LOAD the default LeetCode entry 
+  useEffect(() => {
+    retrieveLeetCode("2 Pointers");          // 2 Pointers will be default pattern
+  }, []);
 
 
   return (
@@ -47,6 +59,7 @@ function App() {
                   prevActionArr={prevActionArr} 
                   setPrevActionArr={setPrevActionArr} 
                   textSection={textSection} 
+                  leetCodeEntry={leetCodeEntry}
                   setLeetCodeEntry={setLeetCodeEntry}
               />
             ]}/>
@@ -73,7 +86,7 @@ function App() {
                     setTextSection={setTextSection} 
                     prevActionArr={prevActionArr} 
                     setPrevActionArr={setPrevActionArr} 
-                    leetcodeEntry={leetcodeEntry}
+                    leetCodeEntry={leetCodeEntry}
                   />
                 }/>
               </Routes>

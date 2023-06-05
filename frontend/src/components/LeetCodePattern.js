@@ -2,9 +2,6 @@ import React from "react"
 
 function LeetCodePattern( {topicNum, handleTextSection, leetCodeEntry} ) {
 
-    // call to DB or MicroService that loads the LeetCode PATTERN content based on topicNum
-    // and if topicNum is 0, then this is just default Pattern page w/ "select a pattern to begin"
-    // then return that info for rendering
 
     const leetCodePatternList = leetCodeEntry.patternInfo;
 

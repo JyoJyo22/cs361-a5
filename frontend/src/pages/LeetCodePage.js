@@ -20,11 +20,10 @@ function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, se
     // RETRIEVE a LeetCode entry by ID
     const retrieveLeetCode = async (patternName) => {
         // const response = await fetch(`/get/${patternName}`, { method: 'GET' });    // retrieve a single Leetcode Entry by Name
-         // console.log(patternName);
          const response = await fetch(`https://leetcode-microservice.onrender.com/get/${patternName}`);
-         const newLeetCode = await response.json();                     // Name field is just based on which menu item is clicked
+         const newLeetCode = await response.json();               
          console.log("INITIAL LEET CODE: ", newLeetCode);
-         setLeetCodeEntry(newLeetCode);                                          // see below, it'll be the same as topicNum
+         setLeetCodeEntry(newLeetCode);                                
      } 
  
      // LOAD the LeetCode entry 

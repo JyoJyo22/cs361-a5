@@ -19,22 +19,16 @@ function LeetCodeMenu( {topicNum, setTopicNum, prevActionArr, setPrevActionArr, 
     // RETRIEVE a LeetCode entry by ID
     const retrieveLeetCode = async (patternName) => {
        // const response = await fetch(`/get/${patternName}`, { method: 'GET' });    // retrieve a single Leetcode Entry by Name
-        // console.log(patternName);
         const response = await fetch(`https://leetcode-microservice.onrender.com/get/${patternName}`);
         const newLeetCode = await response.json();                     // Name field is just based on which menu item is clicked
         console.log("NEW LEET CODE: ", newLeetCode);
-        setLeetCodeEntry(newLeetCode);                                          // see below, it'll be the same as topicNum
+        setLeetCodeEntry(newLeetCode);                            
     } 
 
     // LOAD the LeetCode entry 
     useEffect(() => {
-        // if (isFirstRender) {
-        //     retrieveLeetCode("BFS");
-        //     isFirstRender = false;          // load default pattern at first render
-        //     return;
-        // }
         retrieveLeetCode(leetCodeEntry.patternName);
-    }, []);      // leetCodeEntry.patternName
+    }, []);      
 
     return (
 

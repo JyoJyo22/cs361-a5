@@ -403,8 +403,8 @@ button:hover {
         padding: 10px;
         border: 5px solid var(--button-bg);
         border-radius: 15px;
-        margin: 30px auto 10px auto;
-        width: 200px;
+        margin: 10px auto 10px auto;
+        min-width: 200px;
         height: 70px;
         justify-content: center;
         align-items: center;
@@ -425,6 +425,35 @@ button:hover {
 
     .button-labels {
         text-align: center;
+        max-width: 200px;
+        margin: auto;
+    }
+
+    .no-bullets {
+        list-style-type: none;
+    }
+
+    .contact-inner {
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .align-left {
+        text-align: left;
+    }
+
+    .buttons-div {
+        justify-content: center;
+        display: flex;
+    }
+
+    .text-div {
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+
+    .single-button {
+        margin: 20px;
     }
 
 

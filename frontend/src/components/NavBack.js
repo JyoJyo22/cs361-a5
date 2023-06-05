@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTextSection} ) {
+function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTextSection, leetCodeEntry, setLeetCodeEntry} ) {
 
     const redirect = useNavigate();
 
@@ -14,7 +14,7 @@ function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTex
         const prevState = copyPrevActionArr.pop();         // grab whatever the last State was and store it
         setPrevActionArr(copyPrevActionArr);            // and NOW we can set the arr to the copy w/ useState
 
-        console.log(prevState.page);
+        // console.log(prevState.page);
         
         if (prevState.page === "/") {
             handleInfo("leetcode");
@@ -24,8 +24,9 @@ function NavBack( {setInfo, prevActionArr, setPrevActionArr, setTopicNum, setTex
         } else {
             setTopicNum(prevState.topicNum);
             setTextSection(prevState.textSection);
+            setLeetCodeEntry(prevState.leetCodeEntry)
         }
-        console.log(prevActionArr);
+        console.log("Previous actions: ", prevActionArr);
     }
 
 

@@ -12,30 +12,32 @@ import LeetCodePage from './pages/LeetCodePage';
 function App() {
 
   const [info, setInfo] = useState("home");                     // for Home Page content
-  const [topicNum, setTopicNum] = useState(0);                  // for Leetcode Menu pattern/topic number 
+  const [topicNum, setTopicNum] = useState(1);                  // for Leetcode Menu pattern/topic number 
   const [textSection, setTextSection] = useState("pattern");    // for LeetCode Page content
 
   const [prevActionArr, setPrevActionArr] = useState([]);       // for back button
 
   const [leetCodeEntry, setLeetCodeEntry] = useState({            // Use state to bring in LeetCode data from MongoDB
     patternName: "pattern name",                                    
-    patternInfo: "pattern info",
-    patternMoreInfo: "more pattern info",
-    patternSources  : "pattern soruces"
+    patternInfo: ["pattern info"],
+    patternMoreInfo: ["more pattern info"],
+    patternSources: ["pattern sources"]
   }); 
-  
 
-  // RETRIEVE the default LeetCode entry by ID
-  const retrieveLeetCode = async (patternName) => {
-    const response = await fetch(`/get/${patternName}`, { method: 'GET' });     // retrieve a single Leetcode Entry by Name
-    const newLeetCode = await response.json();                     
-    setLeetCodeEntry(newLeetCode);                                    
-} 
+  const [isFirstRender, setIsFirstRender] = useState(true);         // constant for skipping a render on page load
 
-  // LOAD the default LeetCode entry 
-  useEffect(() => {
-    retrieveLeetCode("2 Pointers");          // 2 Pointers will be default pattern
-  }, []);
+
+// RETRIEVE the default LeetCode entry by ID
+//   const retrieveLeetCode = async (patternName) => {
+//     const response = await fetch(`/get/${patternName}`, { method: 'GET' });     // retrieve a single Leetcode Entry by Name
+//     const newLeetCode = await response.json();                     
+//     setLeetCodeEntry(newLeetCode);                                    
+// } 
+
+//   // LOAD the default LeetCode entry 
+//   useEffect(() => {
+//     retrieveLeetCode("2 Pointers");          // 2 Pointers will be default pattern
+//   }, []);
 
 
   return (
@@ -52,6 +54,8 @@ function App() {
                   setPrevActionArr={setPrevActionArr} 
                   setTopicNum={setTopicNum} 
                   setTextSection={setTextSection}
+                  leetCodeEntry={leetCodeEntry}
+                  setLeetCodeEntry={setLeetCodeEntry}
               />, 
               <LeetCodeMenu 
                   topicNum={topicNum} 
@@ -61,6 +65,8 @@ function App() {
                   textSection={textSection} 
                   leetCodeEntry={leetCodeEntry}
                   setLeetCodeEntry={setLeetCodeEntry}
+                  isFirstRender={isFirstRender}
+                  setIsFirstRender={setIsFirstRender}
               />
             ]}/>
           </Routes>
@@ -87,6 +93,8 @@ function App() {
                     prevActionArr={prevActionArr} 
                     setPrevActionArr={setPrevActionArr} 
                     leetCodeEntry={leetCodeEntry}
+                    setLeetCodeEntry={setLeetCodeEntry}
+                    setIsFirstRender={setIsFirstRender}
                   />
                 }/>
               </Routes>

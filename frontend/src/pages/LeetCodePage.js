@@ -17,19 +17,19 @@ function LeetCodePage( {topicNum, textSection, setTextSection, prevActionArr, se
         console.log("Previous actions: ", prevActionArr);
     }
 
-    // RETRIEVE a LeetCode entry by ID
-    const retrieveLeetCode = async (patternName) => {
-        // const response = await fetch(`/get/${patternName}`, { method: 'GET' });    // retrieve a single Leetcode Entry by Name
-         const response = await fetch(`https://leetcode-microservice.onrender.com/get/${patternName}`);
-         const newLeetCode = await response.json();               
-         console.log("INITIAL LEET CODE: ", newLeetCode);
-         setLeetCodeEntry(newLeetCode);                                
-     } 
+    // // RETRIEVE a LeetCode entry by ID
+    // const retrieveLeetCode = async (patternName) => {
+    //      const response = await fetch(`/get/${patternName}`, { method: 'GET' });    // retrieve a single Leetcode Entry by Name
+    //     // const response = await fetch(`https://leetcode-microservice.onrender.com/get/${patternName}`);
+    //      const newLeetCode = await response.json();               
+    //      console.log("INITIAL LEET CODE: ", newLeetCode);
+    //      setLeetCodeEntry(newLeetCode);                                
+    //  } 
  
-     // LOAD the LeetCode entry 
-     useEffect(() => {
-         retrieveLeetCode("BFS");
-     }, []);
+    //  // LOAD the LeetCode entry 
+    //  useEffect(() => {
+    //      retrieveLeetCode("BFS");
+    //  }, []);
 
 
     switch(textSection) {

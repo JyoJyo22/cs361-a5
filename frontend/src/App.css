@@ -289,7 +289,9 @@ button:hover {
     
     nav a:hover {
         background-color: var(--sections);
-        border: 5px solid var(--button-bg);
+        color: var(--button-bg);
+        border: 5px solid var(--sections);
+        cursor: pointer;
     }
     
     
@@ -454,6 +456,28 @@ button:hover {
 
     .single-button {
         margin: 20px;
+    }
+
+    .start-studying {
+        text-decoration: none;
+        display: flex;
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        padding: 10px;
+        border: 5px solid var(--button-bg);
+        border-radius: 15px;
+        margin: 50px auto 10px auto;
+        min-width: 200px;
+        height: 70px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .start-studying:hover {
+        background-color: var(--bg-color);
+        color: var(--button-bg);
+        border: 5px solid var(--sections);
+        cursor: pointer;
     }
 
 

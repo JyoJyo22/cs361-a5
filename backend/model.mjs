@@ -25,10 +25,11 @@ leetcode_db.once("open", (error) => {
 
 // Define the Collection's Schema.
 const LeetCodeSchema = mongoose.Schema({
+    patternKey: {type: String, required: true, default: "patternKey"},
     patternName: { type: String, required: true, default: "patternName" },
-	patternInfo: { type: String, required: true, default: "patternInfo" },
-    patternMoreInfo: { type: String, required: true, default: "patternMoreInfo" },
-	patternSources: { type: String, required: true, default: "patternSources" }
+	patternInfo: { type: Array, required: true, default: ["patternInfo"] },
+    patternMoreInfo: { type: Array, required: true, default: ["patternMoreInfo"] },
+	patternSources: { type: Array, required: true, default: ["patternSources"] }
 });
 
 
@@ -39,9 +40,10 @@ const leetcode = mongoose.model("LeetCode", LeetCodeSchema);
 
 //   CREATE MODELS     ##################################################
 // define a model to create a Document in your new Collection
-const createLeetCodeDoc = async (patternName, patternInfo, patternMoreInfo, patternSources) => {
+const createLeetCodeDoc = async (patternKey, patternName, patternInfo, patternMoreInfo, patternSources) => {
     // create an instance of the LeetCode Model from above
     const leetCodeEntry = new leetcode({ 
+        patternKey: patternKey,
         patternName: patternName,
         patternInfo: patternInfo,
         patternMoreInfo: patternMoreInfo,
@@ -63,8 +65,8 @@ const getLeetCode = async () => {
 
 // define a model to retrieve Docs from the Collection via Name field
 // Retrieve based on the Name field and return a promise.
-const getLeetCodeByName = async ( patternName ) => {
-    const query = leetcode.findOne( {patternName: patternName} );
+const getLeetCodeByName = async ( patternKey ) => {
+    const query = leetcode.findOne( {patternKey: patternKey} );
     return query.exec();
 }
 
@@ -73,10 +75,11 @@ const getLeetCodeByName = async ( patternName ) => {
 // define a model to update a Doc
 // replaceOne()   this can only replace an entire Doc
 // updateOne()    this allows for updating fields within the Doc
-const updateLeetCode = async (_id, patternName, patternInfo, patternMoreInfo, patternSources) => {
+const updateLeetCode = async (patternKey, patternName, patternInfo, patternMoreInfo, patternSources) => {
     const result = await leetcode.replaceOne( 
-        {_id: _id },
+        // {_id: _id },
         {
+            patternKey: patternKey,
             patternName: patternName,
             patternInfo: patternInfo,
             patternMoreInfo: patternMoreInfo,
@@ -84,7 +87,8 @@ const updateLeetCode = async (_id, patternName, patternInfo, patternMoreInfo, pa
         }
         );
     return {
-        _id: _id,
+        // _id: _id,
+        patternKey: patternKey,
         patternName: patternName,
         patternInfo: patternInfo,
         patternMoreInfo: patternMoreInfo,
@@ -95,9 +99,9 @@ const updateLeetCode = async (_id, patternName, patternInfo, patternMoreInfo, pa
 
 
 //  DELETE MODELS       ##############################################
-// define a model to delete a single Doc based on the ID
-const deleteLeetCodeById = async (_id) => {
-    const result = await leetcode.deleteOne( {_id: _id} );
+// define a model to delete a single Doc based on the Key
+const deleteLeetCodeById = async (patternKey) => {
+    const result = await leetcode.deleteOne( {patternKey: patternKey} );
     return result.deletedCount;       // just for logging purposes
 };
 

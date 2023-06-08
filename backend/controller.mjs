@@ -13,6 +13,7 @@ app.use(express.json());
 // define a Create route
 app.post('/create', (req, res) => {
     LeetCodeModels.createLeetCodeDoc(
+        req.body.key,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -49,16 +50,16 @@ app.get('/get', (req, res) => {
 });
 
 
-// define a Retrieve by Name route
-app.get('/get/:patternName', (req, res) => {
-    LeetCodeModels.getLeetCodeByName(req.params.patternName)
+// define a Retrieve by Key route
+app.get('/get/:patternKey', (req, res) => {
+    LeetCodeModels.getLeetCodeByName(req.params.patternKey)
     .then(retrievedLeetCode => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
                 console.log("Retrieved from LeetCode DB: ", retrievedLeetCode);
                 console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved by Name.");
             } else {
-                res.status(404).json( { Error: `The patternName ${req.params.patternName} was not found.`} );
+                res.status(404).json( { Error: `The patternName ${req.params.patternKey} was not found.`} );
             }
         })
         .catch(error => {
@@ -69,10 +70,10 @@ app.get('/get/:patternName', (req, res) => {
 
 
 //  UPDATE CONTROLLER     ######################################
-// define an Update route
-app.put('/update/:_id', (req, res) => {
+// define an Update route by Key
+app.put('/update/:patternKey', (req, res) => {
     LeetCodeModels.updateLeetCode(
-        req.params._id,
+        req.params.patternKey,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -91,8 +92,8 @@ app.put('/update/:_id', (req, res) => {
 
 //  DELETE CONTROLLER     ######################################
 // define a Delete route
-app.delete('/delete/:_id', (req, res) => {
-    LeetCodeModels.deleteLeetCodeById(req.params._id)
+app.delete('/delete/patternKey', (req, res) => {
+    LeetCodeModels.deleteLeetCodeById(req.params.patternKey)
         .then(deletedCount => {
             if (deletedCount === 1) {
                 res.status(204).send();

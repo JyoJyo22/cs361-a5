@@ -9,7 +9,7 @@ function LeetCodeMore( {topicNum, prevActionArr, handleTextSection, leetCodeEntr
         <div className="leet-main-page">
 
             <div className="text-section text-div">
-                <h2>More Info on pattern {topicNum}:  {leetCodeEntry.patternName} </h2>
+                <h2>Steps of LeetCode pattern {topicNum}:  {leetCodeEntry.patternName} </h2>
                 <ul className="align-left">
                     {leetCodeSteps.map((step) => (
                         <li>{step}</li>
@@ -19,12 +19,10 @@ function LeetCodeMore( {topicNum, prevActionArr, handleTextSection, leetCodeEntr
 
             <div className="buttons-div">
                 <div className="single-button">
-                    <button className="inner-buttons" onClick={ () => handleTextSection("pattern")}>Return to Studying</button>
-                    <p className="button-labels"> head back to LeetCode studying </p>
+                    <button className="inner-buttons" onClick={ () => handleTextSection("pattern")}>Main Info</button>
                 </div>
                 <div className="single-button">
-                    <button className="inner-buttons" onClick={ () => handleTextSection("sources")}>Outside Sources</button>
-                    <p className="button-labels"> Find more sources on this topic </p>
+                    <button className="inner-buttons" onClick={ () => handleTextSection("sources")}>LC Problems</button>
                 </div>
             </div>
             

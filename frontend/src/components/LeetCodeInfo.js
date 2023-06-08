@@ -57,8 +57,7 @@ function LeetCodeInfo( {prevActionArr, setPrevActionArr, setTopicNum, setTextSec
                 </p>
             </section>
 
-            <button onClick={() => handleStudy()} className="inner-buttons">Start Studying Leetcode</button>
-            <p className="button-labels"> click here to get started </p>
+            <button onClick={() => handleStudy()} className="start-studying">Start Studying Leetcode</button>
         </>
     );
 }

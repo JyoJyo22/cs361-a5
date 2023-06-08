@@ -27,17 +27,17 @@ function App() {
   const [isFirstRender, setIsFirstRender] = useState(true);         // constant for skipping a render on page load
 
 
-// RETRIEVE the default LeetCode entry by ID
-//   const retrieveLeetCode = async (patternName) => {
-//     const response = await fetch(`/get/${patternName}`, { method: 'GET' });     // retrieve a single Leetcode Entry by Name
-//     const newLeetCode = await response.json();                     
-//     setLeetCodeEntry(newLeetCode);                                    
-// } 
+  // RETRIEVE the default LeetCode entry by ID
+  const retrieveLeetCode = async (patternKey) => {
+    const response = await fetch(`/get/${patternKey}`, { method: 'GET' });     // retrieve a single Leetcode Entry by Name
+    const newLeetCode = await response.json();                     
+    setLeetCodeEntry(newLeetCode);                                    
+} 
 
-//   // LOAD the default LeetCode entry 
-//   useEffect(() => {
-//     retrieveLeetCode("2 Pointers");          // 2 Pointers will be default pattern
-//   }, []);
+  // LOAD the default LeetCode entry 
+  useEffect(() => {
+    retrieveLeetCode("BFS");          // 2 Pointers will be default pattern
+  }, []);
 
 
   return (

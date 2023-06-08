@@ -20,12 +20,10 @@ function LeetCodePattern( {topicNum, handleTextSection, leetCodeEntry} ) {
 
             <div className="buttons-div">
                 <div className="single-button">
-                    <button className="inner-buttons" onClick={ () => handleTextSection("more")}>Get More Info</button>
-                    <p className="button-labels"> Head here for extra info on this topic </p>
+                    <button className="inner-buttons" onClick={ () => handleTextSection("more")}>Steps</button>
                 </div>
                 <div className="single-button">
-                    <button className="inner-buttons" onClick={ () => handleTextSection("sources")}>Outside Sources</button>
-                    <p className="button-labels"> Find more sources on this topic </p>
+                    <button className="inner-buttons" onClick={ () => handleTextSection("sources")}>LC Problems</button>
                 </div>
             </div>
 

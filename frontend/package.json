@@ -9,9 +9,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
-  
   "proxy": "http://localhost:3000",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JyoJyo22/cs_361_a2.git"
@@ -22,6 +20,7 @@
     "url": "https://github.com/JyoJyo22/cs_361_a2/issues"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.15",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -32,7 +31,7 @@
     "nodemon": "^2.0.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
+    "react-icons": "^4.9.0",
     "react-image-gallery": "^1.2.11",
     "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",

@@ -13,7 +13,7 @@ app.use(express.json());
 // define a Create route
 app.post('/create', (req, res) => {
     LeetCodeModels.createLeetCodeDoc(
-        req.body.key,
+        req.body.patternKey,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -38,7 +38,7 @@ app.get('/get', (req, res) => {
             if (retrievedLeetCode !== null) {    
                 res.json(retrievedLeetCode);
                 console.log("Retrieved from LeetCode DB: ", retrievedLeetCode);
-                console.log("RETRIEVE:  An existing LeetCode document was successfully retrieved.");
+                console.log("RETRIEVE:  ALL existing LeetCode documents were successfully retrieved.");
             } else {
                 res.status(404).json( { Error: "The LeetCode document was not found."} );
             }
@@ -70,10 +70,11 @@ app.get('/get/:patternKey', (req, res) => {
 
 
 //  UPDATE CONTROLLER     ######################################
-// define an Update route by Key
-app.put('/update/:patternKey', (req, res) => {
+// define an Update route by ID
+app.put('/update/:_id', (req, res) => {
     LeetCodeModels.updateLeetCode(
-        req.params.patternKey,
+        req.params._id,
+        req.body.patternKey,
         req.body.patternName,
         req.body.patternInfo, 
         req.body.patternMoreInfo,
@@ -92,8 +93,8 @@ app.put('/update/:patternKey', (req, res) => {
 
 //  DELETE CONTROLLER     ######################################
 // define a Delete route
-app.delete('/delete/patternKey', (req, res) => {
-    LeetCodeModels.deleteLeetCodeById(req.params.patternKey)
+app.delete('/delete/:_id', (req, res) => {
+    LeetCodeModels.deleteLeetCodeById(req.params._id)
         .then(deletedCount => {
             if (deletedCount === 1) {
                 res.status(204).send();

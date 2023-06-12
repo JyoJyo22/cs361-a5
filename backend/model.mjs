@@ -30,7 +30,9 @@ const LeetCodeSchema = mongoose.Schema({
 	patternInfo: { type: Array, required: true, default: ["patternInfo"] },
     patternMoreInfo: { type: Array, required: true, default: ["patternMoreInfo"] },
 	patternSources: { type: Array, required: true, default: ["patternSources"] }
-});
+    },
+    {versionKey: false}
+);
 
 
 // define a Model variable for a Document
@@ -65,7 +67,7 @@ const getLeetCode = async () => {
 
 // define a model to retrieve Docs from the Collection via Name field
 // Retrieve based on the Name field and return a promise.
-const getLeetCodeByName = async ( patternKey ) => {
+const getLeetCodeByName = async ( patternKey ) => {                 // get by KEY
     const query = leetcode.findOne( {patternKey: patternKey} );
     return query.exec();
 }
@@ -75,9 +77,9 @@ const getLeetCodeByName = async ( patternKey ) => {
 // define a model to update a Doc
 // replaceOne()   this can only replace an entire Doc
 // updateOne()    this allows for updating fields within the Doc
-const updateLeetCode = async (patternKey, patternName, patternInfo, patternMoreInfo, patternSources) => {
+const updateLeetCode = async (_id, patternKey, patternName, patternInfo, patternMoreInfo, patternSources) => {
     const result = await leetcode.replaceOne( 
-        // {_id: _id },
+        {_id: _id }, 
         {
             patternKey: patternKey,
             patternName: patternName,
@@ -87,7 +89,7 @@ const updateLeetCode = async (patternKey, patternName, patternInfo, patternMoreI
         }
         );
     return {
-        // _id: _id,
+        _id: _id,
         patternKey: patternKey,
         patternName: patternName,
         patternInfo: patternInfo,
@@ -100,8 +102,8 @@ const updateLeetCode = async (patternKey, patternName, patternInfo, patternMoreI
 
 //  DELETE MODELS       ##############################################
 // define a model to delete a single Doc based on the Key
-const deleteLeetCodeById = async (patternKey) => {
-    const result = await leetcode.deleteOne( {patternKey: patternKey} );
+const deleteLeetCodeById = async (_id) => {
+    const result = await leetcode.deleteOne( {_id: _id} );
     return result.deletedCount;       // just for logging purposes
 };
 

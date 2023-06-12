@@ -32,7 +32,7 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
 
 
     const addLeetCode = async () => {
-        const patternInfoArr = newPatternInfo.split('&');       // parse the user string into an array via & delimiter
+        const patternInfoArr = newPatternInfo.split('&');         // parse the user string into an array via & delimiter
         const patternStepsArr = newPatternSteps.split('&');
         const patternProblemsArr = newPatternProblems.split('&');
         const newLeetCode = { 
@@ -135,7 +135,6 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                                         type="text"
                                         name="key"
                                         placeholder="Pattern Key"
-                                        value={newPatternKey}
                                         onChange={e => setNewPatternKey(e.target.value)} 
                                         id="patternKey"
                                     />
@@ -144,7 +143,6 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                                     <input
                                         type="text"
                                         name="name"
-                                        value={newPatternName}
                                         placeholder="Pattern Name"
                                         onChange={e => setNewPatternName(e.target.value)} 
                                         id="patternName"
@@ -155,7 +153,6 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                                         type="text"
                                         name="info[]"
                                         placeholder="Pattern Main Info"
-                                        value={newPatternInfo}
                                         onChange={e => setNewPatternInfo(e.target.value)}
                                         id="patternInfo"
                                     />
@@ -164,7 +161,6 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                                     <textarea
                                         type="text"
                                         name="steps[]"
-                                        value={newPatternSteps}
                                         placeholder="Pattern Steps"
                                         onChange={e => setNewPatternSteps(e.target.value)} 
                                         id="patternSteps"
@@ -174,7 +170,6 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                                     <textarea
                                         type="text"
                                         name="problems[]"
-                                        value={newPatternProblems}
                                         placeholder="Pattern LC Problems"
                                         onChange={e => setNewPatternProblems(e.target.value)}
                                         id="patternProblems"
@@ -267,35 +262,125 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                 <>
                     <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
                         <Dialog.Panel>
-                        <Dialog.Title>Deactivate account</Dialog.Title>
-                        <Dialog.Description>
-                            This will permanently deactivate your account
-                        </Dialog.Description>
-                
-                        <p>
-                            Are you sure you want to deactivate your account? All of your data
-                            will be permanently removed. This action cannot be undone.
-                        </p>
-                
-                        <button onClick={() => setAddIsOpen(false)}>Deactivate</button>
-                        <button onClick={() => setAddIsOpen(false)}>Cancel</button>
+                            <Dialog.Title>Add LeetCode Entry</Dialog.Title>
+
+                            <article>
+                                    <label htmlFor="patternKey">Key</label>
+                                    <input
+                                        type="text"
+                                        name="key"
+                                        placeholder="Pattern Key"
+                                        onChange={e => setNewPatternKey(e.target.value)} 
+                                        id="patternKey"
+                                    />
+                                    
+                                    <label htmlFor="patternName">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Pattern Name"
+                                        onChange={e => setNewPatternName(e.target.value)} 
+                                        id="patternName"
+                                    />
+
+                                    <label htmlFor="patternInfo">Main Info</label>
+                                    <textarea
+                                        type="text"
+                                        name="info[]"
+                                        placeholder="Pattern Main Info"
+                                        onChange={e => setNewPatternInfo(e.target.value)}
+                                        id="patternInfo"
+                                    />
+
+                                    <label htmlFor="patternSteps">Steps</label>
+                                    <textarea
+                                        type="text"
+                                        name="steps[]"
+                                        placeholder="Pattern Steps"
+                                        onChange={e => setNewPatternSteps(e.target.value)} 
+                                        id="patternSteps"
+                                    />
+
+                                    <label htmlFor="patternProblems">Problems</label>
+                                    <textarea
+                                        type="text"
+                                        name="problems[]"
+                                        placeholder="Pattern LC Problems"
+                                        onChange={e => setNewPatternProblems(e.target.value)}
+                                        id="patternProblems"
+                                    />
+
+                                    <button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add LeetCode</button>
+                            </article>
                         </Dialog.Panel>
                     </Dialog>
 
                     <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
                         <Dialog.Panel>
-                        <Dialog.Title>Deactivate account</Dialog.Title>
-                        <Dialog.Description>
-                            This will permanently deactivate your account
-                        </Dialog.Description>
-                
-                        <p>
-                            Are you sure you want to deactivate your account? All of your data
-                            will be permanently removed. This action cannot be undone.
-                        </p>
-                
-                        <button onClick={() => setEditIsOpen(false)}>Deactivate</button>
-                        <button onClick={() => setEditIsOpen(false)}>Cancel</button>
+                            <Dialog.Title>Edit LeetCode Entry</Dialog.Title>
+                            <article>
+                                    <label htmlFor="patternKey">Key</label>
+                                    <input
+                                        type="text"
+                                        name="key"
+                                        placeholder={leetCodeEntry.patternKey}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternKey(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternKey"
+                                    />
+                                    
+                                    <label htmlFor="patternName">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder={leetCodeEntry.patternName}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternName(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternName"
+                                    />
+
+                                    <label htmlFor="patternInfo">Main Info</label>
+                                    <textarea
+                                        type="text"
+                                        name="info[]"
+                                        placeholder={leetCodeEntry.patternInfo}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternInfo(e.target.value)
+                                            } 
+                                        }
+                                        id="patternInfo"
+                                    />
+
+                                    <label htmlFor="patternSteps">Steps</label>
+                                    <textarea
+                                        type="text"
+                                        name="steps[]"
+                                        placeholder={leetCodeEntry.patternMoreInfo}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternSteps(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternSteps"
+                                    />
+
+                                    <label htmlFor="patternProblems">Problems</label>
+                                    <textarea
+                                        type="text"
+                                        name="problems[]"
+                                        placeholder={leetCodeEntry.patternSources}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternProblems(e.target.value)
+                                            } 
+                                        }
+                                        id="patternProblems"
+                                    />
+
+                                    <button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit LeetCode</button>
+                            </article>
                         </Dialog.Panel>
                     </Dialog>
 
@@ -312,35 +397,125 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
                 <>
                     <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
                         <Dialog.Panel>
-                        <Dialog.Title>Deactivate account</Dialog.Title>
-                        <Dialog.Description>
-                            This will permanently deactivate your account
-                        </Dialog.Description>
-                
-                        <p>
-                            Are you sure you want to deactivate your account? All of your data
-                            will be permanently removed. This action cannot be undone.
-                        </p>
-                
-                        <button onClick={() => setAddIsOpen(false)}>Deactivate</button>
-                        <button onClick={() => setAddIsOpen(false)}>Cancel</button>
+                            <Dialog.Title>Add LeetCode Entry</Dialog.Title>
+
+                            <article>
+                                    <label htmlFor="patternKey">Key</label>
+                                    <input
+                                        type="text"
+                                        name="key"
+                                        placeholder="Pattern Key"
+                                        onChange={e => setNewPatternKey(e.target.value)} 
+                                        id="patternKey"
+                                    />
+                                    
+                                    <label htmlFor="patternName">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder="Pattern Name"
+                                        onChange={e => setNewPatternName(e.target.value)} 
+                                        id="patternName"
+                                    />
+
+                                    <label htmlFor="patternInfo">Main Info</label>
+                                    <textarea
+                                        type="text"
+                                        name="info[]"
+                                        placeholder="Pattern Main Info"
+                                        onChange={e => setNewPatternInfo(e.target.value)}
+                                        id="patternInfo"
+                                    />
+
+                                    <label htmlFor="patternSteps">Steps</label>
+                                    <textarea
+                                        type="text"
+                                        name="steps[]"
+                                        placeholder="Pattern Steps"
+                                        onChange={e => setNewPatternSteps(e.target.value)} 
+                                        id="patternSteps"
+                                    />
+
+                                    <label htmlFor="patternProblems">Problems</label>
+                                    <textarea
+                                        type="text"
+                                        name="problems[]"
+                                        placeholder="Pattern LC Problems"
+                                        onChange={e => setNewPatternProblems(e.target.value)}
+                                        id="patternProblems"
+                                    />
+
+                                    <button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add LeetCode</button>
+                            </article>
                         </Dialog.Panel>
                     </Dialog>
 
                     <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
                         <Dialog.Panel>
-                        <Dialog.Title>Deactivate account</Dialog.Title>
-                        <Dialog.Description>
-                            This will permanently deactivate your account
-                        </Dialog.Description>
-                
-                        <p>
-                            Are you sure you want to deactivate your account? All of your data
-                            will be permanently removed. This action cannot be undone.
-                        </p>
-                
-                        <button onClick={() => setEditIsOpen(false)}>Deactivate</button>
-                        <button onClick={() => setEditIsOpen(false)}>Cancel</button>
+                            <Dialog.Title>Edit LeetCode Entry</Dialog.Title>
+                            <article>
+                                    <label htmlFor="patternKey">Key</label>
+                                    <input
+                                        type="text"
+                                        name="key"
+                                        placeholder={leetCodeEntry.patternKey}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternKey(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternKey"
+                                    />
+                                    
+                                    <label htmlFor="patternName">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        placeholder={leetCodeEntry.patternName}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternName(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternName"
+                                    />
+
+                                    <label htmlFor="patternInfo">Main Info</label>
+                                    <textarea
+                                        type="text"
+                                        name="info[]"
+                                        placeholder={leetCodeEntry.patternInfo}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternInfo(e.target.value)
+                                            } 
+                                        }
+                                        id="patternInfo"
+                                    />
+
+                                    <label htmlFor="patternSteps">Steps</label>
+                                    <textarea
+                                        type="text"
+                                        name="steps[]"
+                                        placeholder={leetCodeEntry.patternMoreInfo}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternSteps(e.target.value)
+                                            } 
+                                        } 
+                                        id="patternSteps"
+                                    />
+
+                                    <label htmlFor="patternProblems">Problems</label>
+                                    <textarea
+                                        type="text"
+                                        name="problems[]"
+                                        placeholder={leetCodeEntry.patternSources}
+                                        onChange={ (e) => {
+                                            if (e) setEditPatternProblems(e.target.value)
+                                            } 
+                                        }
+                                        id="patternProblems"
+                                    />
+
+                                    <button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit LeetCode</button>
+                            </article>
                         </Dialog.Panel>
                     </Dialog>
 

@@ -170,6 +170,8 @@ button:hover {
 
 
 
+
+
 /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -193,7 +195,8 @@ button:hover {
 @media all and (min-width: 800px) {
 
     .app {
-        background-color: var(--bg-color);  
+        /* background-color: var(--bg-color);   */
+        background-image: radial-gradient(circle, var(--button-text), #333232);
         /* background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -211,7 +214,8 @@ button:hover {
     }
 
     body {
-        background-color: var(--bg-color);     
+        /* background-color: var(--bg-color);      */
+        background-image: radial-gradient(circle, var(--button-bg), var(--bg-color), var(--sections));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -478,6 +482,94 @@ button:hover {
         color: var(--button-bg);
         border: 5px solid var(--sections);
         cursor: pointer;
+    }
+
+    path {
+        color: var(--sections);
+        cursor: pointer;
+    }
+
+    path:hover {
+        color: var(--button-bg);
+        cursor: pointer;
+    }
+
+    .add {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: none;
+        border-radius: 20px;
+    }
+
+    .edit {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: none;
+        border-radius: 20px;
+    }
+
+    .del {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: none;
+        border-radius: 20px;
+    }
+
+    .add-edit-del {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* entire form/dialog style */
+    .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+        background-color: var(--sections);
+        color: var(--button-color);
+    }
+
+    /* add and edit buttons */
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+        background-color: var(--bg-color);
+        color: var(--button-bg);
+        border: 10px solid var(--bg-color);
+        transition: none;
+        max-width: 100px;
+        -webkit-transition: none;
+    }
+    /* add and edit buttons hover */
+    button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
+        background-color: var(--button-bg);
+        color: var(--sections);
+        border: 10px solid var(--button-bg);
+    }
+
+    /* Dialog Content Text */
+    p.MuiTypography-root.MuiDialogContentText-root.MuiTypography-body1.MuiDialogContentText-root.css-qfso29-MuiTypography-root-MuiDialogContentText-root {
+        margin-bottom: 10px;
+        color: #6B6969;
+    }
+
+    /* each placeholder text */
+    input#patternKey {
+        color: #6B6969;
+    }
+    input#patternName {
+        color: #6B6969;
+    }
+    input#patternInfo {
+        color: #6B6969;
+    }
+    input#patternSteps {
+        color: #6B6969;
+    }
+    input#patternProblems {
+        color: #6B6969;
     }
 
 

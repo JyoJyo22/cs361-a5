@@ -2,7 +2,14 @@ import { React, useState } from "react"
 import LeetCodeMore from "../components/LeetCodeMore";
 import LeetCodePattern from "../components/LeetCodePattern";
 import LeetCodeSources from "../components/LeetCodeSources";
-import { Dialog } from '@headlessui/react';
+// import { Dialog } from '@headlessui/react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 
 function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen, setEditIsOpen, topicNum, setTopicNum, textSection, setTextSection, prevActionArr, setPrevActionArr, leetCodeEntry, setLeetCodeEntry} ) {
@@ -125,129 +132,171 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
         case("more"):
             return(
                 <>
-                    <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Add LeetCode Entry</Dialog.Title>
+                    <div>
+                        <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
+                            <DialogTitle>Add LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder="Pattern Key"
+                                    onChange={e => setNewPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder="Pattern Name"
+                                    onChange={e => setNewPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder="Pattern Key"
-                                        onChange={e => setNewPatternKey(e.target.value)} 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Pattern Name"
-                                        onChange={e => setNewPatternName(e.target.value)} 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder="Pattern Main Info"
+                                    onChange={e => setNewPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder="Pattern Main Info"
-                                        onChange={e => setNewPatternInfo(e.target.value)}
-                                        id="patternInfo"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder="Pattern Steps"
+                                    onChange={e => setNewPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder="Pattern Steps"
-                                        onChange={e => setNewPatternSteps(e.target.value)} 
-                                        id="patternSteps"
-                                    />
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder="Pattern LC Problems"
+                                    onChange={e => setNewPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder="Pattern LC Problems"
-                                        onChange={e => setNewPatternProblems(e.target.value)}
-                                        id="patternProblems"
-                                    />
+                    <div>
+                        <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
+                            <DialogTitle>Edit LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder={leetCodeEntry.patternKey}
+                                    onChange={e => setEditPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder={leetCodeEntry.patternName}
+                                    onChange={e => setEditPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder={leetCodeEntry.patternInfo}
+                                    onChange={e => setEditPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                    <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Edit LeetCode Entry</Dialog.Title>
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder={leetCodeEntry.patternKey}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternKey(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder={leetCodeEntry.patternName}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternName(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder={leetCodeEntry.patternMoreInfo}
+                                    onChange={e => setEditPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder={leetCodeEntry.patternInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternInfo(e.target.value)
-                                            } 
-                                        }
-                                        id="patternInfo"
-                                    />
-
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder={leetCodeEntry.patternMoreInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternSteps(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternSteps"
-                                    />
-
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder={leetCodeEntry.patternSources}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternProblems(e.target.value)
-                                            } 
-                                        }
-                                        id="patternProblems"
-                                    />
-
-                                    <button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder={leetCodeEntry.patternSources}
+                                    onChange={e => setEditPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
                     <LeetCodeMore 
                         topicNum={topicNum} 
@@ -260,129 +309,171 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
         case("sources"):
             return(
                 <>
-                    <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Add LeetCode Entry</Dialog.Title>
+                    <div>
+                        <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
+                            <DialogTitle>Add LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder="Pattern Key"
+                                    onChange={e => setNewPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder="Pattern Name"
+                                    onChange={e => setNewPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder="Pattern Key"
-                                        onChange={e => setNewPatternKey(e.target.value)} 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Pattern Name"
-                                        onChange={e => setNewPatternName(e.target.value)} 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder="Pattern Main Info"
+                                    onChange={e => setNewPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder="Pattern Main Info"
-                                        onChange={e => setNewPatternInfo(e.target.value)}
-                                        id="patternInfo"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder="Pattern Steps"
+                                    onChange={e => setNewPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder="Pattern Steps"
-                                        onChange={e => setNewPatternSteps(e.target.value)} 
-                                        id="patternSteps"
-                                    />
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder="Pattern LC Problems"
+                                    onChange={e => setNewPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder="Pattern LC Problems"
-                                        onChange={e => setNewPatternProblems(e.target.value)}
-                                        id="patternProblems"
-                                    />
+                    <div>
+                        <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
+                            <DialogTitle>Edit LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder={leetCodeEntry.patternKey}
+                                    onChange={e => setEditPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder={leetCodeEntry.patternName}
+                                    onChange={e => setEditPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder={leetCodeEntry.patternInfo}
+                                    onChange={e => setEditPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                    <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Edit LeetCode Entry</Dialog.Title>
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder={leetCodeEntry.patternKey}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternKey(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder={leetCodeEntry.patternName}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternName(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder={leetCodeEntry.patternMoreInfo}
+                                    onChange={e => setEditPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder={leetCodeEntry.patternInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternInfo(e.target.value)
-                                            } 
-                                        }
-                                        id="patternInfo"
-                                    />
-
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder={leetCodeEntry.patternMoreInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternSteps(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternSteps"
-                                    />
-
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder={leetCodeEntry.patternSources}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternProblems(e.target.value)
-                                            } 
-                                        }
-                                        id="patternProblems"
-                                    />
-
-                                    <button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder={leetCodeEntry.patternSources}
+                                    onChange={e => setEditPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
                     <LeetCodeSources 
                         topicNum={topicNum} 
@@ -395,129 +486,171 @@ function LeetCodePage( {retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen
         default:                                 // default to option "pattern" for Pattern "main info" page
             return(
                 <>
-                    <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Add LeetCode Entry</Dialog.Title>
+                    <div>
+                        <Dialog open={addIsOpen} onClose={() => setAddIsOpen(false)}>
+                            <DialogTitle>Add LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder="Pattern Key"
+                                    onChange={e => setNewPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder="Pattern Name"
+                                    onChange={e => setNewPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder="Pattern Key"
-                                        onChange={e => setNewPatternKey(e.target.value)} 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Pattern Name"
-                                        onChange={e => setNewPatternName(e.target.value)} 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder="Pattern Main Info"
+                                    onChange={e => setNewPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder="Pattern Main Info"
-                                        onChange={e => setNewPatternInfo(e.target.value)}
-                                        id="patternInfo"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder="Pattern Steps"
+                                    onChange={e => setNewPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder="Pattern Steps"
-                                        onChange={e => setNewPatternSteps(e.target.value)} 
-                                        id="patternSteps"
-                                    />
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder="Pattern LC Problems"
+                                    onChange={e => setNewPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder="Pattern LC Problems"
-                                        onChange={e => setNewPatternProblems(e.target.value)}
-                                        id="patternProblems"
-                                    />
+                    <div>
+                        <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
+                            <DialogTitle>Edit LeetCode</DialogTitle>
+                            <DialogContent>
+                            <DialogContentText>
+                                Separate array indices with an & symbol
+                            </DialogContentText>
+                                <label htmlFor="patternKey">Key</label>
+                                <TextField
+                                    type="text"
+                                    name="key"
+                                    placeholder={leetCodeEntry.patternKey}
+                                    onChange={e => setEditPatternKey(e.target.value)} 
+                                    id="patternKey"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                                
+                                <label htmlFor="patternName">Name</label>
+                                <TextField
+                                    type="text"
+                                    name="name"
+                                    placeholder={leetCodeEntry.patternName}
+                                    onChange={e => setEditPatternName(e.target.value)} 
+                                    id="patternName"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <button onClick={ () => {addLeetCode(); setAddIsOpen(false)} }>Add LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternInfo">Main Info</label>
+                                <TextField
+                                    type="text"
+                                    name="info[]"
+                                    placeholder={leetCodeEntry.patternInfo}
+                                    onChange={e => setEditPatternInfo(e.target.value)}
+                                    id="patternInfo"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                    <Dialog open={editIsOpen} onClose={() => setEditIsOpen(false)}>
-                        <Dialog.Panel>
-                            <Dialog.Title>Edit LeetCode Entry</Dialog.Title>
-                            <article>
-                                    <label htmlFor="patternKey">Key</label>
-                                    <input
-                                        type="text"
-                                        name="key"
-                                        placeholder={leetCodeEntry.patternKey}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternKey(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternKey"
-                                    />
-                                    
-                                    <label htmlFor="patternName">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder={leetCodeEntry.patternName}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternName(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternName"
-                                    />
+                                <label htmlFor="patternSteps">Steps</label>
+                                <TextField
+                                    type="text"
+                                    name="steps[]"
+                                    placeholder={leetCodeEntry.patternMoreInfo}
+                                    onChange={e => setEditPatternSteps(e.target.value)} 
+                                    id="patternSteps"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
 
-                                    <label htmlFor="patternInfo">Main Info</label>
-                                    <textarea
-                                        type="text"
-                                        name="info[]"
-                                        placeholder={leetCodeEntry.patternInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternInfo(e.target.value)
-                                            } 
-                                        }
-                                        id="patternInfo"
-                                    />
-
-                                    <label htmlFor="patternSteps">Steps</label>
-                                    <textarea
-                                        type="text"
-                                        name="steps[]"
-                                        placeholder={leetCodeEntry.patternMoreInfo}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternSteps(e.target.value)
-                                            } 
-                                        } 
-                                        id="patternSteps"
-                                    />
-
-                                    <label htmlFor="patternProblems">Problems</label>
-                                    <textarea
-                                        type="text"
-                                        name="problems[]"
-                                        placeholder={leetCodeEntry.patternSources}
-                                        onChange={ (e) => {
-                                            if (e) setEditPatternProblems(e.target.value)
-                                            } 
-                                        }
-                                        id="patternProblems"
-                                    />
-
-                                    <button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit LeetCode</button>
-                            </article>
-                        </Dialog.Panel>
-                    </Dialog>
+                                <label htmlFor="patternProblems">Problems</label>
+                                <TextField
+                                    type="text"
+                                    name="problems[]"
+                                    placeholder={leetCodeEntry.patternSources}
+                                    onChange={e => setEditPatternProblems(e.target.value)}
+                                    id="patternProblems"
+                                    className="user-input"
+                                    fullWidth
+                                    variant="standard"
+                                    autoFocus
+                                    margin="dense"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                            <Button onClick={ () => {editLeetCode(); setEditIsOpen(false)} }>Edit</Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
 
                     <LeetCodePattern 
                         topicNum={topicNum} 

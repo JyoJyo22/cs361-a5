@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdAddCircle } from 'react-icons/md';
 import { RiEditCircleFill } from 'react-icons/ri';
-import { TiDelete } from 'react-icons/ti';
-import { Dialog } from '@headlessui/react';
-import popUpAdd from './popUpAdd';
-import popUpEdit from './popUpEdit';
+import { MdCancel } from 'react-icons/md';
 
 
 function AddEditDel( {topicNum, setTopicNum, retrieveAllLeetCode, addIsOpen, setAddIsOpen, editIsOpen, setEditIsOpen, leetCodeEntry, setLeetCodeEntry} ) {
@@ -27,17 +24,21 @@ function AddEditDel( {topicNum, setTopicNum, retrieveAllLeetCode, addIsOpen, set
             retrieveAllLeetCode();
             setTopicNum(1);
             console.log("Successfully deleted a LeetCode entry from the DB");
+            alert(`A LeetCode entry has been successfully deleted from the DB`);
         }
         else {
             console.error("Failed to delete the LeetCode entry from the DB");
+            alert("Failed to delete the LeetCode entry from the DB");
         }
     } 
     
     return (
         <>
-            <MdAddCircle onClick={() => onAddLeetCode()} className='add' />
-            <RiEditCircleFill onClick={() => onEditLeetCode() } className='edit' />
-            <TiDelete onClick={() => onDeleteLeetCode()} className='del' />
+            <div className="add-edit-del">
+                <MdAddCircle onClick={() => onAddLeetCode()} className='add' />
+                <RiEditCircleFill onClick={() => onEditLeetCode() } className='edit' />
+                <MdCancel onClick={() => onDeleteLeetCode()} className='del' />
+            </div>
         </>
     )
 
